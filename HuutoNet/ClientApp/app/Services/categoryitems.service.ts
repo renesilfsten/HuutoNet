@@ -8,8 +8,8 @@ export class CategoryItemsService {
 
     constructor(private http: Http) { }
 
-    getCategoryItems(id: number): Promise<CategoryItems> {
-        return this.http.get("https://api.huuto.net/1.1/categories/" + id + "/items")
+    getCategoryItems(id: number, pageNumber: number): Promise<CategoryItems> {
+        return this.http.get("https://api.huuto.net/1.1/categories/" + id + "/items?page=" + pageNumber)
             .toPromise()
             .then(this.handleResponseData)
             .catch(this.handleError);

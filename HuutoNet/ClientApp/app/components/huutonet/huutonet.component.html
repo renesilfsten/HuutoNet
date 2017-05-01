@@ -12,7 +12,7 @@
         <tbody>
             <tr *ngFor="let category of huutoNetCategories?.categories">
                 <td>{{ category.id }}</td>
-                <td><a [routerLink]="['/huuto-net/categories/', category.id]">
+                <td><a [routerLink]="['/huuto-net/categories', category.id, 'page', '1']">
                     {{ category.title }}
                 </a></td>
             </tr>

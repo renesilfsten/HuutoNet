@@ -3,7 +3,15 @@
 <p *ngIf="!categoryItems"><em>Loading...</em></p>
 
 <ng-container *ngIf="categoryItems">
-    <p>Total count: {{categoryItems.totalCount}}</p>
+    <p>Total count: {{categoryItems.totalCount}}   -   Page: {{pageNumber}}</p>
+    <p>
+        <a *ngIf="previousPage" [routerLink]="['/huuto-net/categories', categoryId, 'page', previousPage]">
+            <span class='glyphicon glyphicon-th-list'></span> Previuos page
+        </a> 
+        <a *ngIf="nextPage" [routerLink]="['/huuto-net/categories', categoryId, 'page', nextPage]">
+            <span class='glyphicon glyphicon-th-list'></span> Next page
+        </a>
+    </p>
     <table class='table'>
         <thead>
         <tr>
