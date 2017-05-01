@@ -1,0 +1,21 @@
+<p *ngIf="!huutoNetCategories"><em>Loading...</em></p>
+
+<ng-container *ngIf="huutoNetCategories">
+    <h1>{{ huutoNetCategories?.title }}</h1>
+    <table class='table'>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let category of huutoNetCategories?.categories">
+                <td>{{ category.id }}</td>
+                <td><a [routerLink]="['/huuto-net/categories/', category.id]">
+                    {{ category.title }}
+                </a></td>
+            </tr>
+        </tbody>
+    </table>
+</ng-container>
