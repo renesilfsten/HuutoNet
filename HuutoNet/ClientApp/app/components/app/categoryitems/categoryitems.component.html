@@ -1,37 +1,34 @@
-﻿<h1>Category items</h1>
+﻿<h1>Category items <!--<ng-container *ngIf="categoryItems && categoryItems.totalCount !== null">- Total count: {{categoryItems.totalCount}}</ng-container>--></h1>
 
 <p *ngIf="!categoryItems"><em>Loading...</em></p>
 
-<ng-container *ngIf="categoryItems">
-    <p>Total count: {{categoryItems.totalCount}}   -   Page: {{pageNumber}}</p>
-    <p>
-        <a *ngIf="previousPage" [routerLink]="['/huuto-net/categories', categoryId, 'page', previousPage]">
-            <span class='glyphicon glyphicon-th-list'></span> Previuos page
-        </a> 
-        <a *ngIf="nextPage" [routerLink]="['/huuto-net/categories', categoryId, 'page', nextPage]">
-            <span class='glyphicon glyphicon-th-list'></span> Next page
-        </a>
-    </p>
+<ng-container *ngIf="categoryItems && categoryItems.items?.length > 0">
+    <div class="row-fluid pull-right">
+        <button class="btn btn-default" [class.disabled]="previousPage === null" [class.active]="previousPage !== null" type="button" [routerLink]="['/huuto-net/categories', categoryId, 'page', previousPage]">Previous page</button>
+        <button class="btn btn-default" [class.disabled]="nextPage === null" [class.active]="nextPage !== null" type="button" [routerLink]="['/huuto-net/categories', categoryId, 'page', nextPage]">Next page</button>
+        <span class="text-nowrap">Showing page: {{pageNumber}} <ng-container *ngIf="totalPages">of {{totalPages}}</ng-container></span>
+    </div>
     <table class='table'>
         <thead>
         <tr>
             <th>Title</th>
             <th>Seller</th>
             <th>Location</th>
-            <th>Current price</th>
-            <th>Buy now price</th>
+            <th>Current / Buy now price</th>
             <th>Image</th>
         </tr>
         </thead>
         <tbody>
         <tr *ngFor="let item of categoryItems.items">
-            <td>{{item.title}}</td>
-            <td>{{item.seller}}</td>
+            <td><a class="link-active" href="{{item.links.alternative}}" target="_blank">{{item.title}}</a></td>
+            <td><a href="https://www.huuto.net/kayttaja/{{item.sellerId}}" target="_blank">{{item.seller}}</a></td>
             <td>{{item.location}}</td>
-            <td>{{item.currentPrice}} €</td>
-            <td>{{item.buyNowPrice}} €</td>
-            <td><a target="_blank" href="{{item?.images[0]?.links?.original}}"><img *ngIf="item?.images[0]?.links?.thumbnail" src="{{item?.images[0]?.links?.thumbnail}}" /></a></td>
+            <td>{{item.currentPrice}} <ng-container *ngIf="item.buyNowPrice">/ {{item.buyNowPrice}} €</ng-container></td>
+            <td><a target="_blank" href="{{item?.images[0]?.links?.original}}"><img height="100" *ngIf="item?.images[0]?.links?.thumbnail" src="{{item?.images[0]?.links?.thumbnail}}" /></a></td>
         </tr>
         </tbody>
     </table>
+</ng-container>
+<ng-container *ngIf="categoryItems?.items?.length === 0">
+    <p>No items in selected page</p>
 </ng-container>

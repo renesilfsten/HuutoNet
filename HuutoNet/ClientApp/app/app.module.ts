@@ -8,6 +8,7 @@ import {HuutoNetComponent} from "./components/huutonet/huutonet.component";
 import {HuutoNetService} from "./Services/huutonet.service";
 import {CategoryItemsComponent} from "./components/app/categoryitems/categoryitems.component";
 import {CategoryItemsService} from "./Services/categoryitems.service";
+import {GlobalsComponentService} from "./components/app/globals/globals.component.service";
 
 @NgModule({
     bootstrap: [ AppComponent ],
@@ -20,7 +21,8 @@ import {CategoryItemsService} from "./Services/categoryitems.service";
     ],
     providers: [
         HuutoNetService,
-        CategoryItemsService
+        CategoryItemsService,
+        GlobalsComponentService
     ],
     imports: [
         UniversalModule, // Must be first import. This automatically imports BrowserModule, HttpModule, and JsonpModule too.

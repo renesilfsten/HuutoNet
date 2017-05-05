@@ -5,14 +5,14 @@
     <table class='table'>
         <thead>
             <tr>
-                <th>Id</th>
+                <!--<th>Id</th>-->
                 <th>Title</th>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let category of huutoNetCategories?.categories">
-                <td>{{ category.id }}</td>
-                <td><a [routerLink]="['/huuto-net/categories', category.id, 'page', '1']">
+                <!--<td>{{ category.id }}</td>-->
+                <td><a (click)="addCategoryVisited(category.id, category.title)" [routerLink]="['/huuto-net/categories', category.id, 'page', '1']">
                     {{ category.title }}
                 </a></td>
             </tr>
