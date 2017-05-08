@@ -13,7 +13,6 @@
         <tr>
             <th>Title</th>
             <th>Seller</th>
-            <th>Location</th>
             <th>Current / Buy now price</th>
             <th>Image</th>
         </tr>
@@ -22,7 +21,6 @@
         <tr *ngFor="let item of categoryItems.items">
             <td><a class="link-active" href="{{item.links.alternative}}" target="_blank">{{item.title}}</a></td>
             <td><a href="https://www.huuto.net/kayttaja/{{item.sellerId}}" target="_blank">{{item.seller}}</a></td>
-            <td>{{item.location}}</td>
             <td>{{item.currentPrice}} <ng-container *ngIf="item.buyNowPrice">/ {{item.buyNowPrice}} €</ng-container></td>
             <td><a target="_blank" href="{{item?.images[0]?.links?.original}}"><img height="100" *ngIf="item?.images[0]?.links?.thumbnail" src="{{item?.images[0]?.links?.thumbnail}}" /></a></td>
         </tr>

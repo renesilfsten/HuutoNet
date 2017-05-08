@@ -19,12 +19,12 @@
                     </a>
                 </li>
                 <ng-container *ngIf="visitedCategories && visitedCategories.length > 0">
-                    <li [routerLinkActive]="['link-active']">
+                    <li>
                         <a class="text-info">
                             <span class='glyphicon glyphicon-th-list'></span>Categories last visited:
                         </a>
                     </li>
-                    <li [routerLinkActive]="['link-active']" *ngFor="let category of visitedCategories">
+                    <li *ngFor="let category of visitedCategories">
                         <a [routerLink]="['/huuto-net/categories', category.id, 'page', '1']">
                             <span class='glyphicon glyphicon-th-list'></span>{{ category.title }}
                         </a>

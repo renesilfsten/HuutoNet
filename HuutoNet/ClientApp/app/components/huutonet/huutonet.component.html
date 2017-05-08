@@ -3,12 +3,6 @@
 <ng-container *ngIf="huutoNetCategories">
     <h1>{{ huutoNetCategories?.title }}</h1>
     <table class='table'>
-        <thead>
-            <tr>
-                <!--<th>Id</th>-->
-                <th>Title</th>
-            </tr>
-        </thead>
         <tbody>
             <tr *ngFor="let category of huutoNetCategories?.categories">
                 <!--<td>{{ category.id }}</td>-->
